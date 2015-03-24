@@ -1,0 +1,28 @@
+<% if @nonprofit.errors.any? %>
+  <div class="alert alert-danger">
+    <h3>Please fix these errors:</h3>
+    <ul>
+      <% @nonprofit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for (@nonprofit)  do |f| %>
+  <div class="form-group">
+    <%= f.label :name %></br> 
+    <%= f.text_field :name %>
+  </div>
+  
+   <div class="form-group">
+    <%= f.label :description %></br>
+    <%= f.text_area :description, :size => "70x10" %>
+  </div>
+  
+  <%= f.submit "Add Nonprofit", :class => "btn btn-primary"  %>
+<% end %>
+</div>
+
+<%= link_to "Home", root_path %>

@@ -1,0 +1,7 @@
+development:   
+  adapter: postgresql   
+  database: rails_nonprofit_donations_development    
+
+test:
+  adapter: postgresql   
+  database: rails_nonprofit_donations_test

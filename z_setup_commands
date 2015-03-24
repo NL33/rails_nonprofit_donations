@@ -1,0 +1,89 @@
+open postgresql
+$ rails new rails_nonprofit_donations -d postgresql –T
+
+
+*config/database.yml:
+
+development:   
+  adapter: postgresql   
+  database: rails_nonprofit_donations_development    
+
+test:
+  adapter: postgresql   
+  database: rails_nonprofit_donations_test
+
+open postgres
+
+$ rake db:create
+
+update gemfile
+
+$ bundle install
+
+$ rails generate rspec:install
+
+*Bootstrap
+stylesheets/application.css: change to css.scss (for sass).  Add:
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "styling.scss"; [or other preferred file]
+
+javascripts/application.js: Add:
+//= require bootstrap-sprockets
+
+*users:
+
+--applications controller:
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
+  def authorize
+    redirect_to login_path, alert: "Not authorized" if current_user.nil? #relates to before filters. If user not logged in (ie, current_user = nil), then send error message if takes action not authorized to take
+  end
+
+--views/layouts/application.html.erb:
+<head>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <div id="user_nav">
+    <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>  
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> |
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+</body>
+</html>
+
+
+
+*Migration [Examples:]
+
+$ rails g model nonprofits  
+
+
+[Note: if not using Devise, also create sessions contoller for logins--no migration or model required there]
+
+[examples of rollback, remove, and add:	
+	$ rake db:rollback VERSION=20150121004709 (delete file first; also can use STEP = 2)
+	$ rails generate migration RemoveRecipie_IdFromRecipesTags recipie_id:integer
+	$ rails generate migration AddImageToPhotos image:attachment
+	$ rails generate migration AddImageToPhotos image:attachment
