@@ -3,4 +3,6 @@ root :to => 'nonprofits#index'
 
 resources :nonprofits
 
+resources :charges
+
 end

@@ -1,14 +1,15 @@
+
 <h1> Nonprofits </h1>
+
 </br>
 <div class="row">
-  <% @nonprofits.each do |nonprofit| %>
-  <div class="col-md-4 well">
-	<div class="col-md-12">
-	    <h3> <%= nonprofit.name %></h3>
-	    <p> <%= nonprofit.description %></p>
-    </div>
-   </div>
-<% end %>
-</div>
-</br>
+  <div class="show_nonprofits">
+     <%= render @nonprofits %> <%# equivalent to @nonprofits.each do |nonprofit| ... render 'nonprofit' %>
+
+  </div>
+
+
+  <%#<% @nonprofits.each do |nonprofit| %>
+
+</br> 
 <%= link_to "Add a NonProfit", new_nonprofit_path %>

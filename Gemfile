@@ -16,6 +16,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'textacular'
 gem 'paperclip'
+gem 'stripe'
 
 
 group :development do
