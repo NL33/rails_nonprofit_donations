@@ -3,7 +3,7 @@
 	    <h3> <%= nonprofit.name %></h3>
 	    <p> <%= nonprofit.description %></p>
 
-		<div id="donate_button"><span class="label label-success">Donate</span></div>
+		<div id="donate_button"><span class="label label-success">Donate Once</span></div>
      </br>
      <div id="donate_form">
         <form action="/charges" method="POST" id="payment-form">
@@ -51,6 +51,8 @@
          </form>
       </div>
 
+
+        <div id="subscribe_button"> <%= link_to "Gold Plan: Subscribe!", new_subscription_path, :class=> "btn btn-primary" %></div>
    </div>
   </div>
 

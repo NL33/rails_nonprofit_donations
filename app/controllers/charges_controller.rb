@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
  def create
     # Set your secret key: remember to change this to your live secret key in production
     # See your keys here https://dashboard.stripe.com/account/apikeys
-    #Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    #Stripe.api_key = ENV['STRIPE_SECRET_KEY'] #unnecessary because of reference to the key in views/layouts/application.html.erb
 
     # Get the credit card details submitted by the form
     token = params[:stripeToken]

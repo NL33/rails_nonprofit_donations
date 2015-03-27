@@ -78,6 +78,7 @@ javascripts/application.js: Add:
 *Migration [Examples:]
 
 $ rails g model nonprofits  
+$ rails g model subscriptions
 
 
 [Note: if not using Devise, also create sessions contoller for logins--no migration or model required there]

@@ -5,4 +5,6 @@ resources :nonprofits
 
 resources :charges
 
+resources :subscriptions
+
 end
