@@ -1,5 +1,5 @@
 _____________________________________
-1) Stripe Checkout (basic method of accepting payments)
+1) Stripe Checkout (basic method of accepting payments in Rails--note that this app uses the more customizable stripe.js)
 
 sign up with Stripe
 

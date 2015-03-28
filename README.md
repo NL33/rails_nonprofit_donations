@@ -1,1 +1,1 @@
-# rails_nonprofit_donations
+This Rails demonstrates basic functionality for accepting payments through using the Stripe API. It includes code for accepting payments from a user directly to the owner with the pertinent Stripe account. It also includes some basic setup (just skeletal code) for subscription payments--the next step in subscriptions would be to implement the Stripe API for plans.
